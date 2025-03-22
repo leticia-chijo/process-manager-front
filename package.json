@@ -10,10 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reactflow/core": "^11.11.4",
+    "@xyflow/react": "^12.4.4",
     "axios": "^1.8.4",
     "react": "^19.0.0",
+    "react-d3-tree": "^3.6.6",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.4.0",
+    "reactflow": "^11.11.4",
     "styled-components": "^6.1.16"
   },
   "devDependencies": {
