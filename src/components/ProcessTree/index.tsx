@@ -1,6 +1,6 @@
 import Tree, { TreeNodeDatum } from "react-d3-tree"
 import { TreeNode } from "../../types/treeNode"
-import { Container, NodeGroup, NodeRect, NodeText } from "./styled"
+import { TreeContainer, NodeGroup, NodeRect, NodeText } from "./styled"
 import { useRef } from "react"
 import useTreeZoom from "../../hooks/useTreeZoom"
 
@@ -20,7 +20,7 @@ export default function ProcessTree({ treeData }: ProcessTreeProps) {
   }
 
   return (
-    <Container ref={containerRef}>
+    <TreeContainer ref={containerRef}>
       <Tree
         data={treeData}
         orientation="vertical"
@@ -34,7 +34,7 @@ export default function ProcessTree({ treeData }: ProcessTreeProps) {
           <CustomNode nodeDatum={nodeDatum} onClick={onClickNode} />
         )}
       />
-    </Container>
+    </TreeContainer>
   )
 }
 

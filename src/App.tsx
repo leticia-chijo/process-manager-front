@@ -5,6 +5,8 @@ import { convertToTree } from "./utils/convertDataToTree"
 import ProcessTree from "./components/ProcessTree"
 import { TreeNode } from "./types/treeNode"
 import styled from "styled-components"
+import { TreeContainer } from "./components/ProcessTree/styled"
+import Dropdown from "./components/Dropdown"
 
 export default function App() {
   const [treeData, setTreeData] = useState<TreeNode[] | null>(null)
@@ -16,24 +18,26 @@ export default function App() {
       .then((res) => {
         const tree = convertToTree(res.data)
         setTreeData(tree)
-        setSelectedProcess(tree[0] || null)
       })
       .catch((err) => console.log(err.response.data))
   }, [])
 
-  if (!selectedProcess || !treeData) return <p>Carregando...</p>
+  if (!treeData) return <p>Carregando...</p>
 
   return (
-    <ScreenContaienr>
-      <ProcessTree treeData={selectedProcess} />
-    </ScreenContaienr>
+    <ScreenContainer>
+      <Dropdown treeData={treeData} setSelectedProcess={setSelectedProcess} />
+      {selectedProcess ? <ProcessTree treeData={selectedProcess} /> : <TreeContainer />}
+    </ScreenContainer>
   )
 }
 
-const ScreenContaienr = styled.div`
+const ScreenContainer = styled.div`
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 20px;
+  padding: 20px;
 `

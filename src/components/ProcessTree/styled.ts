@@ -9,10 +9,11 @@ interface NodeProps {
 const PADDING = 8
 const BORDER_RADIUS = 8
 
-export const Container = styled.div`
+export const TreeContainer = styled.div`
   width: 70%;
   height: 400px;
   border: 1px solid #ccc;
+  border-radius: 4px;
   position: relative;
   @media (max-width: 600px) {
     width: 90%;
