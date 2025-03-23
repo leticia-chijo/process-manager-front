@@ -1,14 +1,14 @@
 import { TreeNode } from "../../types/treeNode"
 import { CustomSelect } from "./styled"
 
-interface DropdownProps {
+interface Props {
   treeData: TreeNode[]
   setSelectedProcess: (process: TreeNode) => void
 }
 
-export default function Dropdown({ treeData, setSelectedProcess }: DropdownProps) {
+export default function Dropdown({ treeData, setSelectedProcess }: Props) {
   const options = treeData.map((process) => ({
-    value: process.name,
+    value: process.id,
     label: process.name
   }))
 
@@ -17,7 +17,7 @@ export default function Dropdown({ treeData, setSelectedProcess }: DropdownProps
       placeholder="Selecione um processo..."
       options={options}
       onChange={(selectedOption: any) => {
-        const process = treeData.find((p) => p.name === selectedOption?.value)
+        const process = treeData.find((p) => p.id === selectedOption?.value)
         if (process) setSelectedProcess(process)
       }}
     />

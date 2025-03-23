@@ -1,10 +1,6 @@
 import styled from "styled-components"
 import { colors } from "../../constants/colors"
-
-interface NodeProps {
-  width: number
-  height: number
-}
+import { MOBILE, NODE_HEIGHT, NODE_WIDTH } from "../../constants/sizes"
 
 const PADDING = 8
 const BORDER_RADIUS = 8
@@ -15,8 +11,9 @@ export const TreeContainer = styled.div`
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
-  @media (max-width: 600px) {
-    width: 90%;
+  background-color: white;
+  @media (max-width: ${MOBILE}px) {
+    width: 80%;
     height: 300px;
   }
 `
@@ -25,11 +22,11 @@ export const NodeGroup = styled.g`
   cursor: pointer;
 `
 
-export const NodeRect = styled.rect<NodeProps>`
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
-  x: ${(props) => -(props.width + PADDING) / 2}px;
-  y: ${(props) => -props.height / 2}px;
+export const NodeRect = styled.rect`
+  width: ${NODE_WIDTH}px;
+  height: ${NODE_HEIGHT}px;
+  x: ${-(NODE_WIDTH + PADDING) / 2}px;
+  y: ${-NODE_HEIGHT / 2}px;
   fill: ${colors.primary};
   stroke: ${colors.border};
   stroke-width: 2;
@@ -37,9 +34,9 @@ export const NodeRect = styled.rect<NodeProps>`
   ry: ${BORDER_RADIUS}px;
 `
 
-export const NodeText = styled.div<NodeProps>`
-  width: ${(props) => props.width - PADDING}px;
-  height: ${(props) => props.height}px;
+export const NodeText = styled.div`
+  width: ${NODE_WIDTH - PADDING}px;
+  height: ${NODE_HEIGHT}px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,5 +46,5 @@ export const NodeText = styled.div<NodeProps>`
   overflow-wrap: break-word;
   white-space: normal;
   word-break: break-word;
+  font-family: Calibri, sans-serif;
 `
-
