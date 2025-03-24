@@ -1,3 +1,3 @@
 export default function AddArea() {
-    return <div>AddArea</div>
+  return <div>AddArea</div>
 }

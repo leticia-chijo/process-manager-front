@@ -11,7 +11,7 @@ import { useGlobalState } from "../../hooks/useGlobalState"
 export default function ProcessTreePage() {
   const [treeData, setTreeData] = useState<TreeNode[] | null>(null)
   const [detailsId, setDetailsId] = useState<number>(0)
-  const { processes, loading, error, selectedProcess } = useGlobalState()
+  const { processes, loading, error, selectedProcess, setSelectedProcess } = useGlobalState()
 
   useEffect(() => {
     if (processes) {
@@ -27,7 +27,12 @@ export default function ProcessTreePage() {
   return (
     <ScreenContainer>
       <TreeSelectContainer>
-        <Dropdown treeData={treeData} />
+        <Dropdown
+          data={treeData}
+          selected={selectedProcess}
+          setSelected={setSelectedProcess}
+          placeholder="Selecione um processo..."
+        />
         {selectedProcess ? (
           <ProcessTree treeData={selectedProcess} setDetailsId={setDetailsId} />
         ) : (

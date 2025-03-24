@@ -11,5 +11,7 @@ export const colors = {
   mediumPriority: "#F1C40F",
   highPriority: "#E74C3C",
   background: "#F9F9F9",
-  neutral: "#CECECE"
+  neutral: "#CECECE",
+  inputFocus: "#2684FF",
+  inputError: "#E74C3C"
 }
