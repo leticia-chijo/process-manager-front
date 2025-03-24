@@ -1,10 +1,10 @@
 import { motion } from "framer-motion"
 import styled from "styled-components"
 import { colors } from "../../constants/colors"
-import { MOBILE } from "../../constants/sizes"
+import { MOBILE, NAV_BAR_HEIGHT } from "../../constants/sizes"
 
 export const DetailsContainer = styled(motion.div)`
-  height: calc(100vh - 48px);
+  height: calc(100vh - 48px - ${NAV_BAR_HEIGHT}px);
   padding: 24px;
   box-shadow: -2px 0px 15px rgba(0, 0, 0, 0.08);
   background: #fff;
@@ -52,6 +52,10 @@ export const Title = styled.h2`
   line-height: 28px;
   font-weight: 600;
   color: ${colors.secondary};
+  @media (max-width: ${MOBILE}px) {
+    font-size: 24px;
+    line-height: 24px;
+  }
 `
 
 export const Line = styled.div`
@@ -63,11 +67,14 @@ export const Line = styled.div`
 `
 
 export const Text = styled.span`
-  font-size: 20px;
+  font-size: 18px;
   color: ${colors.primaryText};
   strong {
     font-weight: 600;
     color: ${colors.secondary};
+  }
+  @media (max-width: ${MOBILE}px) {
+    font-size: 16px;
   }
 `
 
@@ -79,7 +86,7 @@ export const PrioritySection = styled.div`
 
 export const PriorityChip = styled.span<{ color: string }>`
   display: inline-block;
-  padding: 6px 12px;
+  padding: 4px 8px;
   border-radius: 20px;
   font-size: 14px;
   font-weight: 600;
