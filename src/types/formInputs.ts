@@ -4,5 +4,5 @@ export interface FormInputs {
   name: string
   label?: string
   placeholder?: string
-  data?: any[]
+  data?: any
 }

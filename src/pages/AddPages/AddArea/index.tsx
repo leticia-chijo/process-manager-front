@@ -6,7 +6,7 @@ import { AreaBody } from "../../../types/area"
 import { AreaService } from "../../../services/areaService"
 
 const formInputs: FormInputs[] = [
-  { id: 1, type: "input", name: "name", label: "Nome", placeholder: "Nome da Área" }
+  { id: 1, type: "input", name: "name", label: "Nome", placeholder: "Nome da área" }
 ]
 
 const formInit: any = {}
