@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { DetailsContainer } from "./styled"
-import axios from "axios"
 import { Process } from "../../types/process"
 import { useAnimation } from "framer-motion"
 import useIsMobile from "../../hooks/useIsMobile"
 import DetailsContent from "./DetailsContent"
+import { useRequest } from "../../hooks/useRequest"
+import { ProcessService } from "../../services/processService"
 
 interface Props {
   detailsId: number
@@ -12,23 +13,26 @@ interface Props {
 }
 
 export default function ProcessDetails({ detailsId, setDetailsId }: Props) {
-  const [process, setProcess] = useState<Process | null>(null)
   const containerControl = useAnimation()
   const isMobile = useIsMobile()
+  const {
+    data: processData,
+    loading,
+    error,
+    fetchData
+  } = useRequest<Process>(() => ProcessService.getById(detailsId))
 
   useEffect(() => {
     if (detailsId !== 0) {
-      axios
-        .get<Process>(`${import.meta.env.VITE_API_URL}/process/${detailsId}`)
-        .then(async (res) => {
-          setProcess(res.data)
-          if (isMobile) {
-            await containerControl.start({ y: 0, transition: { duration: 0.6 } })
-          } else {
-            await containerControl.start({ width: "35vw", opacity: 1, transition: { duration: 0.6 } })
-          }
-        })
-        .catch((err) => alert(err.response.data))
+      fetchData()
+    }
+  }, [detailsId])
+
+  useEffect(() => {
+    if (isMobile) {
+      containerControl.start({ y: 0, transition: { duration: 0.6 } })
+    } else {
+      containerControl.start({ width: "35vw", opacity: 1, transition: { duration: 0.6 } })
     }
   }, [detailsId, isMobile])
 
@@ -39,7 +43,6 @@ export default function ProcessDetails({ detailsId, setDetailsId }: Props) {
       await containerControl.start({ width: 0, opacity: 0, transition: { duration: 0.6 } })
     }
     setDetailsId(0)
-    setProcess(null)
   }
 
   return (
@@ -47,7 +50,9 @@ export default function ProcessDetails({ detailsId, setDetailsId }: Props) {
       animate={containerControl}
       initial={isMobile ? { y: "100%" } : { width: 0, opacity: 0 }}
     >
-      {process && <DetailsContent process={process} onClose={onClose} />}
+      {error && <p>Erro: {error}</p>}
+      {!error && loading && <p>Carregando...</p>}
+      {!error && !loading && processData && <DetailsContent process={processData} onClose={onClose} />}
     </DetailsContainer>
   )
 }

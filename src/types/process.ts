@@ -1,22 +1,6 @@
-export type Team = {
-  id: number
-  name: string
-  area: { name: string }
-}
-
-export type Doc = {
-  id: number
-  name: string
-  link: string
-}
-
-export type Tool = {
-  id: number
-  name: string
-  link: string
-  image?: string
-  purpose: string
-}
+import { Doc } from "./doc"
+import { Team } from "./team"
+import { Tool } from "./tool"
 
 export type Process = {
   id: number
@@ -27,4 +11,14 @@ export type Process = {
   docs: Doc[]
   tools: Tool[]
   subProcesses: Process[]
+}
+
+export type ProcessBody = {
+  title: string
+  priority: "HIGH" | "MEDIUM" | "LOW"
+  manual: boolean
+  docs: number[]
+  tools: {id: number, purpose:string}[]
+  teamId: number
+  parentId: number | null
 }

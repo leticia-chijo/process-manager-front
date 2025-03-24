@@ -1,6 +1,7 @@
 import { ExternalLinkImage, Line, List, ListImage, ListItem, ListText, Section, Text } from "./styled"
 import externalLink from "../../assets/images/external-link.png"
-import { Doc, Tool } from "../../types/process"
+import { Tool } from "../../types/tool"
+import { Doc } from "../../types/doc"
 
 interface Props {
   data: Tool[] | Doc[]

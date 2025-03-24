@@ -10,8 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@reactflow/core": "^11.11.4",
-    "@xyflow/react": "^12.4.4",
     "axios": "^1.8.4",
     "framer-motion": "^12.5.0",
     "react": "^19.0.0",
