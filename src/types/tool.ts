@@ -5,3 +5,5 @@ export type Tool = {
   image?: string
   purpose: string
 }
+
+export type ToolBody = Omit<Tool, "id" | "purpose">
