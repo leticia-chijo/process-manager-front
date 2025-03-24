@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import { colors } from "../../constants/colors"
 import { Link } from "react-router-dom"
-import { MOBILE } from "../../constants/sizes"
+import { ADD_BAR_WIDTH, MOBILE } from "../../constants/sizes"
 
 export const MenuContainer = styled.div`
-  width: 250px;
+  width: ${ADD_BAR_WIDTH}px;
   height: 100%;
   padding: 12px;
   box-sizing: border-box;

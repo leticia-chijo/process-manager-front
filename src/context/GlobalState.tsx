@@ -12,11 +12,16 @@ interface Props {
 }
 
 export default function GlobalState({ children }: Props) {
-  const { data: processes, loading, error, fetchData } = useRequest<Process[]>(ProcessService.getAllNested)
+  const {
+    data: processes,
+    loading,
+    error,
+    executeRequest
+  } = useRequest<Process[]>(ProcessService.getAllNested)
   const [selectedProcess, setSelectedProcess] = useState<TreeNode | null>(null)
 
   useEffect(() => {
-    fetchData()
+    executeRequest()
   }, [])
 
   const state: GlobalStateType = { processes, loading, error, selectedProcess, setSelectedProcess }

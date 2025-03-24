@@ -1,4 +1,4 @@
-import { CustomSelect, LabelText } from "./styled"
+import { CustomSelect, LabelText, SelectContainer } from "./styled"
 
 interface BaseItem {
   id: number
@@ -28,7 +28,7 @@ export default function Dropdown<T extends BaseItem>({
   const selectedOption = selected ? options.find((opt) => opt.value === selected.id) : null
 
   return (
-    <>
+    <SelectContainer>
       {label && <LabelText>{label}</LabelText>}
       <CustomSelect
         placeholder={placeholder || ""}
@@ -39,6 +39,6 @@ export default function Dropdown<T extends BaseItem>({
           if (item) setSelected(item)
         }}
       />
-    </>
+    </SelectContainer>
   )
 }

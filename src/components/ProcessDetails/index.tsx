@@ -19,12 +19,12 @@ export default function ProcessDetails({ detailsId, setDetailsId }: Props) {
     data: processData,
     loading,
     error,
-    fetchData
+    executeRequest
   } = useRequest<Process>(() => ProcessService.getById(detailsId))
 
   useEffect(() => {
     if (detailsId !== 0) {
-      fetchData()
+     executeRequest()
     }
   }, [detailsId])
 
