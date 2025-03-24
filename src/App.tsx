@@ -9,6 +9,7 @@ import { TreeContainer } from "./components/ProcessTree/styled"
 import Dropdown from "./components/Dropdown"
 import ProcessDetails from "./components/ProcessDetails"
 import { MOBILE } from "./constants/sizes"
+import TreePlaceholder from "./components/TreePlaceholder"
 
 export default function App() {
   const [treeData, setTreeData] = useState<TreeNode[] | null>(null)
@@ -34,7 +35,7 @@ export default function App() {
         {selectedProcess ? (
           <ProcessTree treeData={selectedProcess} setDetailsId={setDetailsId} />
         ) : (
-          <TreeContainer />
+          <TreePlaceholder />
         )}
       </TreeSelectContainer>
       {detailsId !== 0 && <ProcessDetails detailsId={detailsId} setDetailsId={setDetailsId} />}

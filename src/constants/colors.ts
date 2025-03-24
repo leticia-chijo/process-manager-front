@@ -10,5 +10,6 @@ export const colors = {
   lowPriority: "#2ECC71",
   mediumPriority: "#F1C40F",
   highPriority: "#E74C3C",
-  background: "#F9F9F9"
+  background: "#F9F9F9",
+  neutral: "#CECECE"
 }
