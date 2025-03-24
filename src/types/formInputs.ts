@@ -5,4 +5,5 @@ export interface FormInputs {
   label?: string
   placeholder?: string
   data?: any
+  isMulti?: boolean
 }

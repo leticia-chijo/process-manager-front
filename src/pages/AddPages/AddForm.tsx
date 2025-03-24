@@ -1,6 +1,7 @@
 import Dropdown from "../../components/Dropdown"
 import Input from "../../components/Input"
 import { FormInputs } from "../../types/formInputs"
+import { Tool } from "../../types/tool"
 import { FormContainer, SubmitButton } from "./styled"
 
 interface Props<T extends Record<string, any>> {
@@ -10,6 +11,7 @@ interface Props<T extends Record<string, any>> {
   submitForm: () => void
   error?: string | null
   loading?: boolean
+  hasTools?: boolean
 }
 
 export default function AddForm<T extends Record<string, any>>({
@@ -18,7 +20,8 @@ export default function AddForm<T extends Record<string, any>>({
   setForm,
   submitForm,
   error,
-  loading
+  loading,
+  hasTools
 }: Props<T>) {
   return (
     <FormContainer>
@@ -45,12 +48,28 @@ export default function AddForm<T extends Record<string, any>>({
               placeholder={input.placeholder}
               selected={form[fieldName]}
               setSelected={(text) => setForm({ ...form, [fieldName]: text })}
+              isMulti={input.isMulti}
             />
           )
         } else {
           return null
         }
       })}
+      {hasTools &&
+        form.tools.map((tool: Tool) => (
+          <Input
+            key={`tool${tool.id}`}
+            label={`Para que a ferramenta ${tool.name} será usada?`}
+            onChange={(text) =>
+              setForm({
+                ...form,
+                tools: form.tools.map((t: Tool) => (t.id === tool.id ? { ...t, purpose: text } : t))
+              })
+            }
+            value={tool.purpose}
+            error={null}
+          />
+        ))}
       <SubmitButton onClick={submitForm} disabled={loading}>
         {loading ? "Enviando..." : "Enviar"}
       </SubmitButton>

@@ -7,10 +7,11 @@ interface BaseItem {
 
 interface Props<T> {
   data: T[]
-  selected: T | null
-  setSelected: (item: T | null) => void
+  selected: T | T[] | null
+  setSelected: (item: T | T[] | null) => void
   placeholder?: string
   label?: string
+  isMulti?: boolean
 }
 
 export default function Dropdown<T extends BaseItem>({
@@ -18,14 +19,35 @@ export default function Dropdown<T extends BaseItem>({
   selected,
   setSelected,
   placeholder,
-  label
+  label,
+  isMulti
 }: Props<T>) {
   const options = data.map((item) => ({
     value: item.id,
     label: item.name
   }))
 
-  const selectedOption = selected ? options.find((opt) => opt.value === selected.id) : null
+  let selectedOption = null
+
+  if (isMulti) {
+    if (Array.isArray(selected)) {
+      selectedOption = options.filter((opt) => selected.some((s) => s.id === opt.value))
+    }
+  } else {
+    if (selected) {
+      selectedOption = options.find((opt) => opt.value === (selected as T).id) || null
+    }
+  }
+
+  const onChange = (selected: any) => {
+    if (isMulti) {
+      const items = selected ? selected.map((s: any) => data.find((i) => i.id === s.value)) : []
+      setSelected(items as T[])
+    } else {
+      const item = data.find((i) => i.id === selected?.value) || null
+      setSelected(item)
+    }
+  }
 
   return (
     <SelectContainer>
@@ -34,10 +56,8 @@ export default function Dropdown<T extends BaseItem>({
         placeholder={placeholder || ""}
         options={options}
         value={selectedOption}
-        onChange={(selected: any) => {
-          const item = data.find((i) => i.id === selected?.value)
-          if (item) setSelected(item)
-        }}
+        onChange={onChange}
+        isMulti={isMulti}
       />
     </SelectContainer>
   )

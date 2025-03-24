@@ -5,6 +5,7 @@ import { colors } from "../../constants/colors"
 
 export const SelectContainer = styled.div`
   width: 70%;
+  margin-bottom: 14px;
   @media (max-width: ${MOBILE}px) {
     width: 80%;
   }

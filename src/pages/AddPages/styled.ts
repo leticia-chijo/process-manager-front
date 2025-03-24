@@ -28,6 +28,7 @@ export const SubmitButton = styled.button`
   width: 40%;
   height: 40px;
   margin-top: 16px;
+  margin-bottom: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
