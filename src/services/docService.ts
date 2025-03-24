@@ -1,16 +1,11 @@
+import { DocBody } from "../types/doc"
 import { api } from "./api"
-import { ProcessBody } from "../types/process"
 
-const url = "/process"
+const url = "/docs"
 
-export const ProcessService = {
+export const DocsService = {
   async getAll() {
-    const response = await api.get(`${url}/list`)
-    return response.data
-  },
-
-  async getAllNested() {
-    const response = await api.get(`${url}/nested`)
+    const response = await api.get(url)
     return response.data
   },
 
@@ -19,12 +14,12 @@ export const ProcessService = {
     return response.data
   },
 
-  async create(data: ProcessBody) {
+  async create(data: DocBody) {
     const response = await api.post(url, data)
     return response.data
   },
 
-  async update(id: number, data: ProcessBody) {
+  async update(id: number, data: DocBody) {
     const response = await api.put(`${url}/${id}`, data)
     return response.data
   }

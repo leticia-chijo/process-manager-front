@@ -3,3 +3,5 @@ export type Doc = {
   name: string
   link: string
 }
+
+export type DocBody = Omit<Doc, "id">
