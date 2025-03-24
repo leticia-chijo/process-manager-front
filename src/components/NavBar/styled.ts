@@ -31,7 +31,10 @@ export const NavButton = styled(Link)<{ $active?: boolean }>`
     margin-left: 4px;
   }
   @media (max-width: ${MOBILE}px) {
-    font-size: 16px;
+    padding: 8px 12px;
+    :first-child {
+      visibility: collapse;
+    }
   }
 `
 

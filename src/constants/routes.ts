@@ -1,2 +1,8 @@
 export const ROUTE_HOME = "/"
 export const ROUTE_ADD = "/add"
+export const ROUTE_ADD_AREA = "area"
+export const ROUTE_ADD_TEAM = "team"
+export const ROUTE_ADD_DOC = "doc"
+export const ROUTE_ADD_TOOL = "tool"
+export const ROUTE_ADD_PROCESS = "process"
+export const ROUTE_ADD_SUB_PROCESS = "sub"
