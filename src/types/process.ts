@@ -30,5 +30,5 @@ export type ProcessFormData = {
   docs: Doc[]
   tools: { id: number; purpose: string }[]
   teamId: { id: number; name: string }
-  parentId: number | null
+  parentId?: Process | null
 }

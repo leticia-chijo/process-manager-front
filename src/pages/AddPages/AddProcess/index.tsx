@@ -20,9 +20,9 @@ const priorities = [
 
 export default function AddProcess() {
   const { setProcesses } = useGlobalState()
-  const { data: teams, executeRequest: executeTeamReq } = useRequest<Team[]>(() => TeamService.getAll())
-  const { data: docs, executeRequest: executeDocReq } = useRequest<Doc[]>(() => DocsService.getAll())
-  const { data: tools, executeRequest: executeToolReq } = useRequest<Tool[]>(() => ToolService.getAll())
+  const { data: teams, executeRequest: executeTeamReq } = useRequest<Team[]>(TeamService.getAll)
+  const { data: docs, executeRequest: executeDocReq } = useRequest<Doc[]>(DocsService.getAll)
+  const { data: tools, executeRequest: executeToolReq } = useRequest<Tool[]>(ToolService.getAll)
   const { executeRequest: executeProcessGet } = useRequest<Process[]>(ProcessService.getAllNested)
   const { executeRequest: executeProcessPost, loading } = useRequest<ProcessBody>(() =>
     ProcessService.create({
@@ -30,7 +30,8 @@ export default function AddProcess() {
       priority: form.priority.id,
       teamId: form.teamId.id,
       docs: form.docs.length === 0 ? [] : form.docs.map((doc) => doc.id),
-      tools: form.tools.length === 0 ? [] : form.tools.map((tool) => ({ id: tool.id, purpose: tool.purpose }))
+      tools: form.tools.length === 0 ? [] : form.tools.map((tool) => ({ id: tool.id, purpose: tool.purpose })),
+      parentId: null
     })
   )
 
@@ -79,12 +80,11 @@ export default function AddProcess() {
   formInit.docs = []
   formInit.tools = []
 
-  const [form, setForm] = useState<ProcessFormData>({ ...formInit, manual: false, parentId: null })
+  const [form, setForm] = useState<ProcessFormData>({ ...formInit, manual: false })
 
   const submitForm = async () => {
     const res = await executeProcessPost()
-    console.log(form)
-
+    
     if (res) {
       alert("Processo adicionado com sucesso!")
       setForm(formInit)

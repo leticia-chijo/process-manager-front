@@ -3,6 +3,7 @@ import { CustomSelect, LabelText, SelectContainer } from "./styled"
 interface BaseItem {
   id: number
   name: string
+  title?: string
 }
 
 interface Props<T> {
@@ -24,7 +25,7 @@ export default function Dropdown<T extends BaseItem>({
 }: Props<T>) {
   const options = data.map((item) => ({
     value: item.id,
-    label: item.name
+    label: item.name || item.title
   }))
 
   let selectedOption = null
