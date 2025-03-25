@@ -1,3 +1,11 @@
+import { Image, ScreenContainer, Text } from "./styled"
+import sadCat from "@/assets/images/sad-cat.png"
+
 export default function ErrorPage() {
-  return <div>Erro 404: essa página não existe</div>
+  return (
+    <ScreenContainer>
+      <Image src={sadCat} alt="Um gatinho com cara triste" />
+      <Text>A página que você tentou acessar não existe!</Text>
+    </ScreenContainer>
+  )
 }
