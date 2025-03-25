@@ -38,7 +38,7 @@ export default function AddForm<T extends Record<string, any>>({
               onChange={(text) => setForm({ ...form, [fieldName]: text })}
               label={input.label || ""}
               placeholder={input.placeholder}
-              error={error}
+              error={null}
             />
           )
         } else if (input.type === "dropdown") {

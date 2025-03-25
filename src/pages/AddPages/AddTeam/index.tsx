@@ -6,11 +6,15 @@ import { FormInputs } from "@/types/formInputs"
 import { TeamBody, TeamFormData } from "@/types/team"
 import { TeamService } from "@/services/teamService"
 import { AreaService } from "@/services/areaService"
+import Modal from "@/components/Modal"
 
 export default function AddTeam() {
-  const { executeRequest: executeTeamReq, loading } = useRequest<TeamBody>(() =>
-    TeamService.create({ ...form, areaId: form.areaId.id })
-  )
+  const [isModalOpen, setModalOpen] = useState(false)
+  const {
+    executeRequest: executeTeamReq,
+    loading,
+    error
+  } = useRequest<TeamBody>(() => TeamService.create({ ...form, areaId: form.areaId.id }))
   const { data: areas, executeRequest: executeAreaReq } = useRequest<Area[]>(() => AreaService.getAll())
 
   useEffect(() => {
@@ -37,18 +41,24 @@ export default function AddTeam() {
       alert("Time adicionado com sucesso!")
       setForm(formInit)
     } else {
-      alert("Preencha os dados corretamente!")
+      setModalOpen(true)
     }
   }
 
   return (
-    <AddForm<TeamFormData>
-      formInputs={formInputs}
-      form={form}
-      setForm={setForm}
-      submitForm={submitForm}
-      error={null}
-      loading={loading}
-    />
+    <>
+      <AddForm<TeamFormData>
+        formInputs={formInputs}
+        form={form}
+        setForm={setForm}
+        submitForm={submitForm}
+        loading={loading}
+      />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        message={error || "Preencha os dados corretamente!"}
+      />
+    </>
   )
 }

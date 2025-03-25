@@ -4,6 +4,7 @@ import { useRequest } from "@/hooks/useRequest"
 import { FormInputs } from "@/types/formInputs"
 import { ToolBody } from "@/types/tool"
 import { ToolService } from "@/services/toolService"
+import Modal from "@/components/Modal"
 
 const formInputs: FormInputs[] = [
   { id: 1, type: "input", name: "name", label: "Nome", placeholder: "Nome da ferramenta" },
@@ -25,7 +26,8 @@ formInputs.forEach((input) => {
 
 export default function AddTool() {
   const [form, setForm] = useState<ToolBody>(formInit)
-  const { executeRequest, loading } = useRequest<ToolBody>(() => ToolService.create(form))
+  const [isModalOpen, setModalOpen] = useState(false)
+  const { executeRequest, loading, error } = useRequest<ToolBody>(() => ToolService.create(form))
 
   const submitForm = async () => {
     const res = await executeRequest()
@@ -34,18 +36,24 @@ export default function AddTool() {
       alert("Ferramenta adicionado com sucesso!")
       setForm(formInit)
     } else {
-      alert("Preencha os dados corretamente!")
+      setModalOpen(true)
     }
   }
 
   return (
-    <AddForm<ToolBody>
-      formInputs={formInputs}
-      form={form}
-      setForm={setForm}
-      submitForm={submitForm}
-      error={null}
-      loading={loading}
-    />
+    <>
+      <AddForm<ToolBody>
+        formInputs={formInputs}
+        form={form}
+        setForm={setForm}
+        submitForm={submitForm}
+        loading={loading}
+      />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        message={error || "Preencha os dados corretamente!"}
+      />
+    </>
   )
 }

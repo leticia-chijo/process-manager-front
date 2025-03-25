@@ -4,6 +4,7 @@ import { useRequest } from "@/hooks/useRequest"
 import { DocBody } from "@/types/doc"
 import { FormInputs } from "@/types/formInputs"
 import { DocsService } from "@/services/docService"
+import Modal from "@/components/Modal"
 
 const formInputs: FormInputs[] = [
   { id: 1, type: "input", name: "name", label: "Nome", placeholder: "Nome do documento" },
@@ -18,7 +19,8 @@ formInputs.forEach((input) => {
 
 export default function AddDoc() {
   const [form, setForm] = useState<DocBody>(formInit)
-  const { executeRequest, loading } = useRequest<DocBody>(() => DocsService.create(form))
+  const [isModalOpen, setModalOpen] = useState(false)
+  const { executeRequest, loading, error } = useRequest<DocBody>(() => DocsService.create(form))
 
   const submitForm = async () => {
     const res = await executeRequest()
@@ -27,18 +29,25 @@ export default function AddDoc() {
       alert("Documento adicionado com sucesso!")
       setForm(formInit)
     } else {
-      alert("Preencha os dados corretamente!")
+      setModalOpen(true)
     }
   }
 
   return (
-    <AddForm<DocBody>
-      formInputs={formInputs}
-      form={form}
-      setForm={setForm}
-      submitForm={submitForm}
-      error={null}
-      loading={loading}
-    />
+    <>
+      <AddForm<DocBody>
+        formInputs={formInputs}
+        form={form}
+        setForm={setForm}
+        submitForm={submitForm}
+        loading={loading}
+      />
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        message={error || "Preencha os dados corretamente!"}
+      />
+    </>
   )
 }

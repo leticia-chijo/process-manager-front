@@ -12,14 +12,20 @@ import { DocsService } from "@/services/docService"
 import { ProcessService } from "@/services/processService"
 import { TeamService } from "@/services/teamService"
 import { ToolService } from "@/services/toolService"
+import Modal from "@/components/Modal"
 
 export default function AddProcess() {
+  const [isModalOpen, setModalOpen] = useState(false)
   const { setProcesses } = useGlobalState()
   const { data: teams, executeRequest: executeTeamReq } = useRequest<Team[]>(TeamService.getAll)
   const { data: docs, executeRequest: executeDocReq } = useRequest<Doc[]>(DocsService.getAll)
   const { data: tools, executeRequest: executeToolReq } = useRequest<Tool[]>(ToolService.getAll)
   const { executeRequest: executeProcessGet } = useRequest<Process[]>(ProcessService.getAllNested)
-  const { executeRequest: executeProcessPost, loading } = useRequest<ProcessBody>(() =>
+  const {
+    executeRequest: executeProcessPost,
+    loading,
+    error
+  } = useRequest<ProcessBody>(() =>
     ProcessService.create({
       ...form,
       priority: form.priority.id,
@@ -87,19 +93,25 @@ export default function AddProcess() {
       const res = await executeProcessGet()
       if (res !== null) setProcesses(res)
     } else {
-      alert("Preencha os dados corretamente!")
+      setModalOpen(true)
     }
   }
 
   return (
-    <AddForm<ProcessFormData>
-      formInputs={formInputs}
-      form={form}
-      setForm={setForm}
-      submitForm={submitForm}
-      error={null}
-      loading={loading}
-      hasTools={true}
-    />
+    <>
+      <AddForm<ProcessFormData>
+        formInputs={formInputs}
+        form={form}
+        setForm={setForm}
+        submitForm={submitForm}
+        loading={loading}
+        hasTools={true}
+      />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        message={error || "Preencha os dados corretamente!"}
+      />
+    </>
   )
 }
