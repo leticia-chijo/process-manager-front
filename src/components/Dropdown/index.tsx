@@ -23,10 +23,12 @@ export default function Dropdown<T extends BaseItem>({
   label,
   isMulti
 }: Props<T>) {
-  const options = data.map((item) => ({
-    value: item.id,
-    label: item.name || item.title
-  }))
+  const options = data
+    .map((item) => ({
+      value: item.id,
+      label: item.name || item.title as string
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label))
 
   let selectedOption = null
 
