@@ -1,11 +1,13 @@
 import { useEffect } from "react"
 import { useAnimation } from "framer-motion"
-import { DetailsContainer } from "./styled"
+import { DetailsContainer, LoadingContainer } from "./styled"
 import DetailsContent from "./DetailsContent"
 import { Process } from "@/types/process"
 import useIsMobile from "@/hooks/useIsMobile"
 import { useRequest } from "@/hooks/useRequest"
 import { ProcessService } from "@/services/processService"
+import { colors } from "@/constants/colors"
+import { Oval } from "react-loader-spinner"
 
 interface Props {
   detailsId: number
@@ -51,7 +53,17 @@ export default function ProcessDetails({ detailsId, setDetailsId }: Props) {
       initial={isMobile ? { y: "100%" } : { width: 0, opacity: 0 }}
     >
       {error && <p>Erro: {error}</p>}
-      {!error && loading && <p>Carregando...</p>}
+      {!error && loading && (
+        <LoadingContainer>
+          <Oval
+            height="80"
+            width="80"
+            strokeWidth={4}
+            color={colors.secondary}
+            secondaryColor={colors.primaryLight}
+          />
+        </LoadingContainer>
+      )}
       {!error && !loading && processData && <DetailsContent process={processData} onClose={onClose} />}
     </DetailsContainer>
   )

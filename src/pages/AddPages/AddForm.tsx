@@ -1,8 +1,10 @@
 import { FormContainer, SubmitButton } from "./styled"
 import Dropdown from "@/components/Dropdown"
 import Input from "@/components/Input"
+import { colors } from "@/constants/colors"
 import { FormInputs } from "@/types/formInputs"
 import { Tool } from "@/types/tool"
+import { Oval } from "react-loader-spinner"
 
 interface Props<T extends Record<string, any>> {
   formInputs: FormInputs[]
@@ -71,7 +73,17 @@ export default function AddForm<T extends Record<string, any>>({
           />
         ))}
       <SubmitButton onClick={submitForm} disabled={loading}>
-        {loading ? "Enviando..." : "Enviar"}
+        {loading ? (
+          <Oval
+            height="24"
+            width="24"
+            strokeWidth={4}
+            color={colors.primaryContrast}
+            secondaryColor={colors.primaryLight}
+          />
+        ) : (
+          "Enviar"
+        )}
       </SubmitButton>
     </FormContainer>
   )

@@ -7,11 +7,13 @@ import Dropdown from "@/components/Dropdown"
 import ProcessDetails from "@/components/ProcessDetails"
 import TreePlaceholder from "@/components/TreePlaceholder"
 import { useGlobalState } from "@/hooks/useGlobalState"
+import { colors } from "@/constants/colors"
+import { Oval } from "react-loader-spinner"
 
 export default function ProcessTreePage() {
   const [treeData, setTreeData] = useState<TreeNode[] | null>(null)
   const [detailsId, setDetailsId] = useState<number>(0)
-  const { processes, loading, error, selectedProcess, setSelectedProcess } = useGlobalState()
+  const { processes, loading, selectedProcess, setSelectedProcess } = useGlobalState()
 
   useEffect(() => {
     if (processes) {
@@ -20,9 +22,19 @@ export default function ProcessTreePage() {
     }
   }, [processes])
 
-  if (!treeData || loading) return <p>Carregando...</p>
-
-  if (error) console.log(error)
+  if (!treeData || loading) {
+    return (
+      <ScreenContainer>
+        <Oval
+          height="80"
+          width="80"
+          strokeWidth={4}
+          color={colors.secondary}
+          secondaryColor={colors.primaryLight}
+        />
+      </ScreenContainer>
+    )
+  }
 
   return (
     <ScreenContainer>
