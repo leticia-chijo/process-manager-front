@@ -52,7 +52,7 @@ export default function AddProcess() {
       id: 4,
       type: "dropdown",
       name: "docs",
-      label: "Documentos",
+      label: "Documentos (opcional)",
       placeholder: "Selecione os documentos",
       data: docs,
       isMulti: true
@@ -61,7 +61,7 @@ export default function AddProcess() {
       id: 5,
       type: "dropdown",
       name: "tools",
-      label: "Ferramentas",
+      label: "Ferramentas (opcional)",
       placeholder: "Selecione as ferramentas",
       data: tools,
       isMulti: true

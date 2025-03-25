@@ -26,7 +26,7 @@ export default function Dropdown<T extends BaseItem>({
   const options = data
     .map((item) => ({
       value: item.id,
-      label: item.name || item.title as string
+      label: item.name || item.title || ""
     }))
     .sort((a, b) => a.label.localeCompare(b.label))
 

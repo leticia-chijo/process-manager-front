@@ -18,10 +18,8 @@ export default function AddSubProcess() {
   const { data: teams, executeRequest: executeTeamReq } = useRequest<Team[]>(TeamService.getAll)
   const { data: docs, executeRequest: executeDocReq } = useRequest<Doc[]>(DocsService.getAll)
   const { data: tools, executeRequest: executeToolReq } = useRequest<Tool[]>(ToolService.getAll)
-  const { executeRequest: executeProcessGet } = useRequest<Process[]>(ProcessService.getAllNested)
-  const { data: processes, executeRequest: executeProcessGetList } = useRequest<Process[]>(
-    ProcessService.getAll
-  )
+  const { data: processes, executeRequest: executeProcessGetList } = useRequest<Process[]>(ProcessService.getAll)
+  const { executeRequest: executeProcessGetTree } = useRequest<Process[]>(ProcessService.getAllNested)
   const { executeRequest: executeProcessPost, loading } = useRequest<ProcessBody>(() =>
     ProcessService.create({
       ...form,
@@ -64,7 +62,7 @@ export default function AddSubProcess() {
       id: 5,
       type: "dropdown",
       name: "docs",
-      label: "Documentos",
+      label: "Documentos (opcional)",
       placeholder: "Selecione os documentos",
       data: docs,
       isMulti: true
@@ -73,7 +71,7 @@ export default function AddSubProcess() {
       id: 6,
       type: "dropdown",
       name: "tools",
-      label: "Ferramentas",
+      label: "Ferramentas (opcional)",
       placeholder: "Selecione as ferramentas",
       data: tools,
       isMulti: true
@@ -96,8 +94,8 @@ export default function AddSubProcess() {
     if (res) {
       alert("Sub-processo adicionado com sucesso!")
       setForm(formInit)
-      const res = await executeProcessGet()
-      if (res !== null) setProcesses(res)
+      const getRes = await executeProcessGetTree()
+      if (getRes !== null) setProcesses(getRes)
     } else {
       alert("Preencha os dados corretamente!")
     }

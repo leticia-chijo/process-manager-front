@@ -46,7 +46,7 @@ export default function ProcessTreePage() {
           placeholder="Selecione um processo..."
         />
         {selectedProcess ? (
-          <ProcessTree treeData={selectedProcess} setDetailsId={setDetailsId} />
+          <ProcessTree treeData={selectedProcess as TreeNode} setDetailsId={setDetailsId} />
         ) : (
           <TreePlaceholder />
         )}

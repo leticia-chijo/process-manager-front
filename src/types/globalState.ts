@@ -6,6 +6,6 @@ export interface GlobalStateType {
   setProcesses: (process: Process[] | null) => void
   loading: boolean
   error: string | null
-  selectedProcess: TreeNode | null
-  setSelectedProcess: (process: TreeNode | null) => void
+  selectedProcess: TreeNode | TreeNode[] | null
+  setSelectedProcess: (process: TreeNode | TreeNode[] | null) => void
 }
