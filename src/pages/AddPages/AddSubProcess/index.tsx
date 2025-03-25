@@ -88,7 +88,7 @@ export default function AddSubProcess() {
   formInit.docs = []
   formInit.tools = []
 
-  const [form, setForm] = useState<ProcessFormData>({ ...formInit, manual: false, parentId: null })
+  const [form, setForm] = useState<ProcessFormData>({ ...formInit, parentId: null })
 
   const submitForm = async () => {
     const res = await executeProcessPost()
