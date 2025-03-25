@@ -1,8 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import ProcessTreePage from "./pages/ProcessTreePage"
-import NavBar from "./components/NavBar"
-import ErrorPage from "./pages/ErrorPage"
-import AddPages from "./pages/AddPages"
+import NavBar from "@/components/NavBar"
+import GlobalState from "@/context/GlobalState"
 import {
   ROUTE_ADD,
   ROUTE_ADD_AREA,
@@ -12,14 +10,16 @@ import {
   ROUTE_ADD_TEAM,
   ROUTE_ADD_TOOL,
   ROUTE_HOME
-} from "./constants/routes"
-import GlobalState from "./context/GlobalState"
-import AddArea from "./pages/AddPages/AddArea"
-import AddTeam from "./pages/AddPages/AddTeam"
-import AddDoc from "./pages/AddPages/AddDoc"
-import AddTool from "./pages/AddPages/AddTool"
-import AddProcess from "./pages/AddPages/AddProcess"
-import AddSubProcess from "./pages/AddPages/AddSubProcess"
+} from "@/constants/routes"
+import ProcessTreePage from "@/pages/ProcessTreePage"
+import ErrorPage from "@/pages/ErrorPage"
+import AddPages from "@/pages/AddPages"
+import AddArea from "@/pages/AddPages/AddArea"
+import AddTeam from "@/pages/AddPages/AddTeam"
+import AddDoc from "@/pages/AddPages/AddDoc"
+import AddTool from "@/pages/AddPages/AddTool"
+import AddProcess from "@/pages/AddPages/AddProcess"
+import AddSubProcess from "@/pages/AddPages/AddSubProcess"
 
 export default function App() {
   return (

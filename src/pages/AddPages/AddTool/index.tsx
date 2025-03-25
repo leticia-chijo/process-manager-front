@@ -1,9 +1,9 @@
 import { useState } from "react"
 import AddForm from "../AddForm"
-import { FormInputs } from "../../../types/formInputs"
-import { useRequest } from "../../../hooks/useRequest"
-import { ToolBody } from "../../../types/tool"
-import { ToolService } from "../../../services/toolService"
+import { useRequest } from "@/hooks/useRequest"
+import { FormInputs } from "@/types/formInputs"
+import { ToolBody } from "@/types/tool"
+import { ToolService } from "@/services/toolService"
 
 const formInputs: FormInputs[] = [
   { id: 1, type: "input", name: "name", label: "Nome", placeholder: "Nome da ferramenta" },

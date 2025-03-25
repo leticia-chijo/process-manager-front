@@ -1,6 +1,6 @@
+import { Process } from "@/types/process"
+import { priorityMap } from "@/constants/priorityMap"
 import { CloseButton, Header, Line, PriorityChip, PrioritySection, Text, Title } from "./styled"
-import { Process } from "../../types/process"
-import { priorityMap } from "../../constants/priorityMap"
 import DetailsLists from "./DetailsLists"
 
 interface Props {

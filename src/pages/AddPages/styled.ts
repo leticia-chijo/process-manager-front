@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { BORDER_RADIUS, MOBILE, NAV_BAR_HEIGHT } from "../../constants/sizes"
-import { colors } from "../../constants/colors"
+import { BORDER_RADIUS, MOBILE, NAV_BAR_HEIGHT } from "@/constants/sizes"
+import { colors } from "@/constants/colors"
 
 export const ScreenContainer = styled.div`
   height: calc(100vh - ${NAV_BAR_HEIGHT}px);

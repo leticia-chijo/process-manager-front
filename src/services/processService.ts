@@ -1,5 +1,5 @@
 import { api } from "./api"
-import { ProcessBody } from "../types/process"
+import { ProcessBody } from "@/types/process"
 
 const url = "/process"
 

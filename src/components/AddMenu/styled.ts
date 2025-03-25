@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { colors } from "../../constants/colors"
 import { Link } from "react-router-dom"
-import { ADD_BAR_WIDTH, MOBILE } from "../../constants/sizes"
+import { colors } from "@/constants/colors"
+import { ADD_BAR_WIDTH, MOBILE } from "@/constants/sizes"
 
 export const MenuContainer = styled.div`
   min-width: ${ADD_BAR_WIDTH}px;

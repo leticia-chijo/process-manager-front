@@ -1,6 +1,6 @@
-import { NODE_HEIGHT, NODE_WIDTH } from "../../constants/sizes"
 import { NodeGroup, NodeRect, NodeText } from "./styled"
-import { CustomNodeDatum } from "../../types/treeNode"
+import { NODE_HEIGHT, NODE_WIDTH } from "@/constants/sizes"
+import { CustomNodeDatum } from "@/types/treeNode"
 
 interface Props {
   nodeDatum: CustomNodeDatum

@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { colors } from "../../constants/colors"
-import { MOBILE } from "../../constants/sizes"
+import { colors } from "@/constants/colors"
+import { MOBILE } from "@/constants/sizes"
 
 export const InputContainer = styled.div`
   position: relative;

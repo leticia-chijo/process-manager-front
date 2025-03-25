@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { colors } from "../../constants/colors"
-import { MOBILE, NODE_HEIGHT, NODE_WIDTH } from "../../constants/sizes"
+import { colors } from "@/constants/colors"
+import { MOBILE, NODE_HEIGHT, NODE_WIDTH } from "@/constants/sizes"
 
 const PADDING = 8
 const BORDER_RADIUS = 8

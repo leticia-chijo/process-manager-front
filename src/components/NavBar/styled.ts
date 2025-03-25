@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { colors } from "../../constants/colors"
 import { Link } from "react-router-dom"
-import { MOBILE } from "../../constants/sizes"
+import { colors } from "@/constants/colors"
+import { MOBILE } from "@/constants/sizes"
 
 export const NavBarContainer = styled.div`
   width: 100%;

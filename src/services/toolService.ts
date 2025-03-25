@@ -1,5 +1,5 @@
-import { ToolBody } from "../types/tool"
 import { api } from "./api"
+import { ToolBody } from "@/types/tool"
 
 const url = "/tools"
 

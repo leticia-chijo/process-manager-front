@@ -5,7 +5,7 @@ import {
   ROUTE_ADD_SUB_PROCESS,
   ROUTE_ADD_TEAM,
   ROUTE_ADD_TOOL
-} from "../../constants/routes"
+} from "@/constants/routes"
 import MenuButton from "./MenuButton"
 import { MenuContainer } from "./styled"
 import { RiTeamFill } from "react-icons/ri"

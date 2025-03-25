@@ -1,8 +1,8 @@
-import Dropdown from "../../components/Dropdown"
-import Input from "../../components/Input"
-import { FormInputs } from "../../types/formInputs"
-import { Tool } from "../../types/tool"
 import { FormContainer, SubmitButton } from "./styled"
+import Dropdown from "@/components/Dropdown"
+import Input from "@/components/Input"
+import { FormInputs } from "@/types/formInputs"
+import { Tool } from "@/types/tool"
 
 interface Props<T extends Record<string, any>> {
   formInputs: FormInputs[]

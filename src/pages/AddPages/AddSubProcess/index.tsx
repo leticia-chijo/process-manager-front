@@ -1,22 +1,17 @@
 import { useEffect, useState } from "react"
-import { FormInputs } from "../../../types/formInputs"
-import { useRequest } from "../../../hooks/useRequest"
-import { Team } from "../../../types/team"
-import { TeamService } from "../../../services/teamService"
 import AddForm from "../AddForm"
-import { Process, ProcessBody, ProcessFormData } from "../../../types/process"
-import { Doc } from "../../../types/doc"
-import { DocsService } from "../../../services/docService"
-import { Tool } from "../../../types/tool"
-import { ToolService } from "../../../services/toolService"
-import { ProcessService } from "../../../services/processService"
-import { useGlobalState } from "../../../hooks/useGlobalState"
-
-const priorities = [
-  { id: "HIGH", name: "Alta" },
-  { id: "MEDIUM", name: "Média" },
-  { id: "LOW", name: "Baixa" }
-]
+import { priorityOptions } from "@/constants/priorityOptions"
+import { useGlobalState } from "@/hooks/useGlobalState"
+import { useRequest } from "@/hooks/useRequest"
+import { Doc } from "@/types/doc"
+import { FormInputs } from "@/types/formInputs"
+import { Process, ProcessBody, ProcessFormData } from "@/types/process"
+import { Team } from "@/types/team"
+import { Tool } from "@/types/tool"
+import { DocsService } from "@/services/docService"
+import { ProcessService } from "@/services/processService"
+import { TeamService } from "@/services/teamService"
+import { ToolService } from "@/services/toolService"
 
 export default function AddSubProcess() {
   const { setProcesses } = useGlobalState()
@@ -33,7 +28,8 @@ export default function AddSubProcess() {
       priority: form.priority.id,
       teamId: form.teamId.id,
       docs: form.docs.length === 0 ? [] : form.docs.map((doc) => doc.id),
-      tools: form.tools.length === 0 ? [] : form.tools.map((tool) => ({ id: tool.id, purpose: tool.purpose })),
+      tools:
+        form.tools.length === 0 ? [] : form.tools.map((tool) => ({ id: tool.id, purpose: tool.purpose })),
       parentId: form.parentId?.id || null
     })
   )
@@ -62,7 +58,7 @@ export default function AddSubProcess() {
       name: "priority",
       label: "Prioridade",
       placeholder: "Selecione uma prioridade",
-      data: priorities
+      data: priorityOptions
     },
     {
       id: 5,

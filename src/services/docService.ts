@@ -1,5 +1,5 @@
-import { DocBody } from "../types/doc"
 import { api } from "./api"
+import { DocBody } from "@/types/doc"
 
 const url = "/docs"
 

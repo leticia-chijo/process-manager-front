@@ -2,11 +2,11 @@ import { useEffect, useState } from "react"
 import { convertToTree } from "../../utils/convertDataToTree"
 import ProcessTree from "../../components/ProcessTree"
 import { TreeNode } from "../../types/treeNode"
-import Dropdown from "../../components/Dropdown"
-import ProcessDetails from "../../components/ProcessDetails"
-import TreePlaceholder from "../../components/TreePlaceholder"
 import { ScreenContainer, TreeSelectContainer } from "./styled"
-import { useGlobalState } from "../../hooks/useGlobalState"
+import Dropdown from "@/components/Dropdown"
+import ProcessDetails from "@/components/ProcessDetails"
+import TreePlaceholder from "@/components/TreePlaceholder"
+import { useGlobalState } from "@/hooks/useGlobalState"
 
 export default function ProcessTreePage() {
   const [treeData, setTreeData] = useState<TreeNode[] | null>(null)

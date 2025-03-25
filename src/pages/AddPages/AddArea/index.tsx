@@ -1,9 +1,9 @@
 import { useState } from "react"
 import AddForm from "../AddForm"
-import { FormInputs } from "../../../types/formInputs"
-import { useRequest } from "../../../hooks/useRequest"
-import { AreaBody } from "../../../types/area"
-import { AreaService } from "../../../services/areaService"
+import { useRequest } from "@/hooks/useRequest"
+import { AreaBody } from "@/types/area"
+import { FormInputs } from "@/types/formInputs"
+import { AreaService } from "@/services/areaService"
 
 const formInputs: FormInputs[] = [
   { id: 1, type: "input", name: "name", label: "Nome", placeholder: "Nome da área" }

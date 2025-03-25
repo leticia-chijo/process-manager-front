@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { MOBILE, NAV_BAR_HEIGHT } from "../../constants/sizes"
+import { MOBILE, NAV_BAR_HEIGHT } from "@/constants/sizes"
 
 export const ScreenContainer = styled.div`
   height: calc(100vh - ${NAV_BAR_HEIGHT}px);

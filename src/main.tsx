@@ -1,12 +1,12 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
-import App from "./App"
+import { GlobalStyle } from "@/styles/GlobalStyle"
 import "reactflow/dist/style.css"
-import { GlobalStyle } from "./styles/GlobalStyle"
+import App from "./App"
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <GlobalStyle />
-      <App />
+    <App />
   </StrictMode>
 )

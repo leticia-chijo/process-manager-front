@@ -1,5 +1,5 @@
-import { AreaBody } from "../types/area"
 import { api } from "./api"
+import { AreaBody } from "@/types/area"
 
 const url = "/areas"
 

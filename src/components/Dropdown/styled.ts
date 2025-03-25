@@ -1,7 +1,7 @@
 import Select from "react-select"
 import styled from "styled-components"
-import { MOBILE } from "../../constants/sizes"
-import { colors } from "../../constants/colors"
+import { MOBILE } from "@/constants/sizes"
+import { colors } from "@/constants/colors"
 
 export const SelectContainer = styled.div`
   width: 70%;

@@ -1,9 +1,9 @@
 import { createContext, ReactNode, useEffect, useState } from "react"
-import { GlobalStateType } from "../types/globalState"
-import { useRequest } from "../hooks/useRequest"
-import { ProcessService } from "../services/processService"
-import { TreeNode } from "../types/treeNode"
-import { Process } from "../types/process"
+import { useRequest } from "@/hooks/useRequest"
+import { ProcessService } from "@/services/processService"
+import { GlobalStateType } from "@/types/globalState"
+import { TreeNode } from "@/types/treeNode"
+import { Process } from "@/types/process"
 
 export const GlobalStateContext = createContext<GlobalStateType | null>(null)
 

@@ -1,11 +1,11 @@
 import { useEffect } from "react"
-import { DetailsContainer } from "./styled"
-import { Process } from "../../types/process"
 import { useAnimation } from "framer-motion"
-import useIsMobile from "../../hooks/useIsMobile"
+import { DetailsContainer } from "./styled"
 import DetailsContent from "./DetailsContent"
-import { useRequest } from "../../hooks/useRequest"
-import { ProcessService } from "../../services/processService"
+import { Process } from "@/types/process"
+import useIsMobile from "@/hooks/useIsMobile"
+import { useRequest } from "@/hooks/useRequest"
+import { ProcessService } from "@/services/processService"
 
 interface Props {
   detailsId: number
@@ -24,7 +24,7 @@ export default function ProcessDetails({ detailsId, setDetailsId }: Props) {
 
   useEffect(() => {
     if (detailsId !== 0) {
-     executeRequest()
+      executeRequest()
     }
   }, [detailsId])
 

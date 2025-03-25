@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { colors } from "../../constants/colors"
 import { TreeContainer } from "../ProcessTree/styled"
-import { MOBILE } from "../../constants/sizes"
+import { colors } from "@/constants/colors"
+import { MOBILE } from "@/constants/sizes"
 
 export const Container = styled(TreeContainer)`
   display: flex;

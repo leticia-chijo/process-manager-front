@@ -1,5 +1,5 @@
-import { TeamBody } from "../types/team"
 import { api } from "./api"
+import { TeamBody } from "@/types/team"
 
 const url = "/teams"
 

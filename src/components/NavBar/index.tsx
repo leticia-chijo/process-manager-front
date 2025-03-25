@@ -2,7 +2,7 @@ import { ButtonsContainer, NavBarContainer, NavButton } from "./styled"
 import { PiTreeBold } from "react-icons/pi"
 import { MdOutlineAddCircleOutline } from "react-icons/md"
 import { useLocation } from "react-router-dom"
-import { ROUTE_ADD, ROUTE_ADD_AREA, ROUTE_HOME } from "../../constants/routes"
+import { ROUTE_ADD, ROUTE_ADD_AREA, ROUTE_HOME } from "@/constants/routes"
 
 export default function NavBar() {
   const location = useLocation()

@@ -1,5 +1,5 @@
-import placeholderTree from "../../assets/images/tree.png"
 import { Container, Image, Text } from "./styled"
+import placeholderTree from "@/assets/images/tree.png"
 
 export default function TreePlaceholder() {
   return (

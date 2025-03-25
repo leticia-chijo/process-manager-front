@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
-import AddMenu from "../../components/AddMenu"
 import { ScreenContainer } from "./styled"
+import AddMenu from "@/components/AddMenu"
 
 export default function AddPages() {
   return (

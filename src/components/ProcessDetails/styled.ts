@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import styled from "styled-components"
-import { colors } from "../../constants/colors"
-import { MOBILE, NAV_BAR_HEIGHT } from "../../constants/sizes"
+import { colors } from "@/constants/colors"
+import { MOBILE, NAV_BAR_HEIGHT } from "@/constants/sizes"
 
 export const DetailsContainer = styled(motion.div)`
   height: calc(100vh - 48px - ${NAV_BAR_HEIGHT}px);

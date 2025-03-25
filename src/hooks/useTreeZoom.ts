@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useMemo, useState } from "react"
-import { TreeNode } from "../types/treeNode"
+import { TreeNode } from "@/types/treeNode"
 
 // Calcular profundidade máxima da árvore (em nós)
 function getDepth(node: TreeNode): number {
@@ -55,7 +55,7 @@ export default function useTreeZoom(
       // Ajustar a posição inicial para centralizar a árvore
       setTranslate({
         x: containerWidth / 2,
-        y: containerHeight / 2 - (treeHeight * calculatedZoom) / 2 + (nodeHeight * calculatedZoom*1.5) 
+        y: containerHeight / 2 - (treeHeight * calculatedZoom) / 2 + nodeHeight * calculatedZoom * 1.5
       })
     }
 

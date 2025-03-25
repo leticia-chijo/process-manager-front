@@ -1,9 +1,9 @@
 import { useState } from "react"
 import AddForm from "../AddForm"
-import { FormInputs } from "../../../types/formInputs"
-import { useRequest } from "../../../hooks/useRequest"
-import { DocBody } from "../../../types/doc"
-import { DocsService } from "../../../services/docService"
+import { useRequest } from "@/hooks/useRequest"
+import { DocBody } from "@/types/doc"
+import { FormInputs } from "@/types/formInputs"
+import { DocsService } from "@/services/docService"
 
 const formInputs: FormInputs[] = [
   { id: 1, type: "input", name: "name", label: "Nome", placeholder: "Nome do documento" },

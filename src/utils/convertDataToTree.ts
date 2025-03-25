@@ -1,5 +1,5 @@
-import { Process } from "../types/process"
-import { TreeNode } from "../types/treeNode"
+import { Process } from "@/types/process"
+import { TreeNode } from "@/types/treeNode"
 
 export function convertToTree(processes: Process[]): TreeNode[] {
   return processes.map((process) => ({

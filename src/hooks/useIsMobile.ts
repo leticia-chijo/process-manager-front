@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { MOBILE } from "../constants/sizes"
+import { MOBILE } from "@/constants/sizes"
 
 export default function useIsMobile() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= MOBILE)

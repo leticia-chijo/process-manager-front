@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import { FormInputs } from "../../../types/formInputs"
-import { useRequest } from "../../../hooks/useRequest"
-import { TeamBody, TeamFormData } from "../../../types/team"
-import { TeamService } from "../../../services/teamService"
-import { AreaService } from "../../../services/areaService"
-import { Area } from "../../../types/area"
 import AddForm from "../AddForm"
+import { useRequest } from "@/hooks/useRequest"
+import { Area } from "@/types/area"
+import { FormInputs } from "@/types/formInputs"
+import { TeamBody, TeamFormData } from "@/types/team"
+import { TeamService } from "@/services/teamService"
+import { AreaService } from "@/services/areaService"
 
 export default function AddTeam() {
   const { executeRequest: executeTeamReq, loading } = useRequest<TeamBody>(() =>

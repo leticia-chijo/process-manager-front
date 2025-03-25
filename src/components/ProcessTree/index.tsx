@@ -1,10 +1,10 @@
-import Tree from "react-d3-tree"
-import { CustomNodeDatum, TreeNode } from "../../types/treeNode"
-import { TreeContainer } from "./styled"
 import { useRef } from "react"
-import useTreeZoom from "../../hooks/useTreeZoom"
+import Tree from "react-d3-tree"
+import { TreeContainer } from "./styled"
 import CustomNode from "./CustomNode"
-import { NODE_HEIGHT, NODE_WIDTH } from "../../constants/sizes"
+import { CustomNodeDatum, TreeNode } from "@/types/treeNode"
+import { NODE_HEIGHT, NODE_WIDTH } from "@/constants/sizes"
+import useTreeZoom from "@/hooks/useTreeZoom"
 
 interface Props {
   treeData: TreeNode

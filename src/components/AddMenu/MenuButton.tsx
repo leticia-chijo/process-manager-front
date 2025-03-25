@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom"
 import { NavButton } from "./styled"
 import { ReactNode } from "react"
-import { ROUTE_ADD } from "../../constants/routes"
+import { ROUTE_ADD } from "@/constants/routes"
 
 interface Props {
   text: string
